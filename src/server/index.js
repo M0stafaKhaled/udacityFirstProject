@@ -6,7 +6,7 @@ const app = require("./server");
 
 app.get("/", function (req, res) {
 
-  res.json({ try: "it in front end serve" });
+ res.sendFile(path.resolve("dist/index.html"));
 });
 
 const BASE = "https://api.meaningcloud.com/sentiment-2.1";
