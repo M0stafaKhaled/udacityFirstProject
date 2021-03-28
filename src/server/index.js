@@ -5,10 +5,8 @@ const app = require("./server");
 // var cors = require("cors");
 
 app.get("/", function (req, res) {
-
- res.sendFile(path.resolve("dist/index.html"));
+  res.sendFile(path.resolve("dist/index.html"));
 });
-
 const BASE = "https://api.meaningcloud.com/sentiment-2.1";
 var bodyParser = require("body-parser");
 var path = require("path");
@@ -25,7 +23,7 @@ app.post("/add-url", async (req, res) => {
       .then((res) => res.json())
       .then((data) => {
         let sen = data.sentence_list[1];
-       let sample = NLPData(sen);
+        let sample = NLPData(sen);
         res.status(200).json({ sample });
       });
   } catch (error) {
@@ -34,24 +32,20 @@ app.post("/add-url", async (req, res) => {
 });
 
 app.get("/test", function (req, res) {
-
   res.status(200).json({ test: "scucess" });
 });
 
-
-function  NLPData(sen){
-              return {
-          text: sen.text,
-          score_tag: sen.score_tag,
-          agreement: sen.agreement,
-          subjectivity: sen.subjectivity,
-          confidence: sen.confidence,
-          irony: sen.irony,
-   }
-        }
+function NLPData(sen) {
+  return {
+    text: sen.text,
+    score_tag: sen.score_tag,
+    agreement: sen.agreement,
+    subjectivity: sen.subjectivity,
+    confidence: sen.confidence,
+    irony: sen.irony,
+  };
+}
 app.listen(PORT, (error) => {
   if (error) throw new Error(error);
   console.log(`Server on port ${PORT}!`);
 });
-
-
