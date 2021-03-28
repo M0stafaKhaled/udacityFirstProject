@@ -3,7 +3,6 @@ const fetch = require("node-fetch");
 var bodyParser = require("body-parser");
 const app = require("./server");
 // var cors = require("cors");
-
 app.get("/", function (req, res) {
   res.sendFile(path.resolve("dist/index.html"));
 });
